@@ -1,6 +1,6 @@
 PhoneEditText [![](https://jitpack.io/v/leoxnidas/PhoneEditText.svg)](https://jitpack.io/#leoxnidas/PhoneEditText)
 -------------
-special phone edittext library, all international phone codes came from [https://countrycode.org/](https://countrycode.org/)
+special phoneedittext library that allows you to have internationals phone codes in a simple edittext, all international phone codes came from [https://countrycode.org/](https://countrycode.org/)
 
 
 Usage
