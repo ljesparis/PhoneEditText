@@ -3,6 +3,7 @@ package com.github.leoxnidas.phoneedittext;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.text.Editable;
+import android.text.InputFilter;
 import android.text.InputType;
 import android.text.Selection;
 import android.text.TextWatcher;
@@ -48,6 +49,8 @@ public class PhoneEditText extends EditText {
             p_mCode = code;
             p_mCodeStr = Codes.asString(code);
             setText((PLUS + p_mCodeStr));
+            setSingleLine(true);
+            setFilters(new InputFilter[]{new InputFilter.LengthFilter(14)});
         } else {
             throw new RuntimeException("International code does not exists.");
         }

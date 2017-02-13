@@ -1,7 +1,6 @@
 package com.github.leoxnidas.phoneedittext;
 
 
-
 public class Codes {
     public static final int AFG = 1;
     public static final int ALB = 2;
