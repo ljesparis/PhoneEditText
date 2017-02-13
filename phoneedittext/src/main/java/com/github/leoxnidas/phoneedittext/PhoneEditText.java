@@ -23,7 +23,7 @@ public class PhoneEditText extends EditText {
         // no matter what kind of input type developer will use
         // always, phone input type shall be used.
         setInputType(-1);
-        addTextChangedListener(new PhoneEditTextWatcher());
+        addTextChangedListener(null);
         setText((PLUS + Codes.asString(p_mCode)));
     }
 
@@ -64,11 +64,7 @@ public class PhoneEditText extends EditText {
 
     @Override
     public void addTextChangedListener(TextWatcher watcher) {
-        if(watcher instanceof PhoneEditTextWatcher) {
-            super.addTextChangedListener(watcher);
-        } else {
-            throw new RuntimeException("textwatcher object should be a PhoneEditTextWatcher object or a child of it.");
-        }
+        super.addTextChangedListener(new PhoneEditTextWatcher());
     }
 
     private class PhoneEditTextWatcher implements TextWatcher {
