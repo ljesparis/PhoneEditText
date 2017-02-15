@@ -39,4 +39,4 @@ dependencies {
 
 License
 --------
-![LICENSE](./LICENSE.md)
+[LICENSE](./LICENSE.md)
