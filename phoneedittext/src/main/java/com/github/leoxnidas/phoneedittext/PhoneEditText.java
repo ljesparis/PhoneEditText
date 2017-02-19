@@ -2,6 +2,7 @@ package com.github.leoxnidas.phoneedittext;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.os.Build;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.InputType;
@@ -9,6 +10,7 @@ import android.text.Selection;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.widget.EditText;
+import android.support.annotation.RequiresApi;
 
 
 public class PhoneEditText extends EditText {
@@ -29,6 +31,19 @@ public class PhoneEditText extends EditText {
         super(context, attrs);
         initPhoneEditText(attrs);
         initialize();
+    }
+
+    public PhoneEditText(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+        initialize();
+        setCode(p_mDefaultCode);
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    public PhoneEditText(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+        super(context, attrs, defStyleAttr, defStyleRes);
+        initialize();
+        setCode(p_mDefaultCode);
     }
 
     private void initialize() {
