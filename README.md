@@ -20,7 +20,7 @@ allprojects {
 
 
 dependencies {
-    compile 'com.github.leoxnidas:PhoneEditText:1.1'
+    compile 'com.github.leoxnidas:PhoneEditText:1.2'
 }
 ```
 
@@ -34,6 +34,9 @@ dependencies {
 
 3- enjoy =P
 
+
+Example
+-------
 ![image](./img/phone.png)
 
 
