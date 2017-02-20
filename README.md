@@ -1,4 +1,4 @@
-PhoneEditText [![](https://jitpack.io/v/leoxnidas/PhoneEditText.svg)](https://jitpack.io/#leoxnidas/PhoneEditText) [![API](https://img.shields.io/badge/API-15%2B-blue.svg?style=flat)](https://android-arsenal.com/api?level=15)
+PhoneEditText [![](https://jitpack.io/v/leoxnidas/PhoneEditText.svg)](https://jitpack.io/#leoxnidas/PhoneEditText) [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Text%20Decorator-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/5310) [![API](https://img.shields.io/badge/API-15%2B-blue.svg?style=flat)](https://android-arsenal.com/api?level=15)
 -------------
 special phoneedittext library that allows you to have internationals phone codes in a simple edittext, all international phone codes came from [https://countrycode.org/](https://countrycode.org/)
 
