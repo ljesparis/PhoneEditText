@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven' 
 
 group='com.github.leoxnidas.phoneedittext'
-version='1.0'
+version='1.3'
 
 android {
     compileSdkVersion 25
@@ -26,9 +26,4 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_6
         targetCompatibility JavaVersion.VERSION_1_6
     }
-}
-
-
-dependencies {
-    compile 'com.android.support:support-annotations:25.1.1'
 }
