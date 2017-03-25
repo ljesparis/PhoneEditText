@@ -61,7 +61,12 @@ public class PhoneEditText extends EditText {
         if(Codes.isCodeValid(code)) {
             p_mCode = code;
             p_mCodeStr = Codes.asString(code);
-            setText((PLUS + p_mCodeStr));
+
+            if(getText().toString().length() > p_mCodeStr.length())
+                setText((PLUS + p_mCodeStr));
+            else
+                setHint((PLUS + p_mCodeStr));
+
             Selection.setSelection(getText(), getText().toString().length());
         } else {
             throw new RuntimeException("International code does not exists.");
@@ -83,6 +88,8 @@ public class PhoneEditText extends EditText {
     }
 
     private class PhoneEditTextWatcher implements TextWatcher {
+
+        private int p_mLastLenght = 0;
 
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
@@ -135,13 +142,18 @@ public class PhoneEditText extends EditText {
 
         @Override
         public void afterTextChanged(Editable s) {
-            if(s.length() < (1 + p_mCodeStr.length())) {
-                setText((PLUS + p_mCodeStr));
-                Selection.setSelection(getText(), (PLUS + p_mCodeStr).length());
-            }
+            if(s.length() == (PLUS + p_mCodeStr).length() - 1
+                    && p_mLastLenght > (PLUS + p_mCodeStr).length() - 1) {
+                setText("");
 
-            if(getSelectionStart() <= p_mCodeStr.length() - 1)
-                Selection.setSelection(s, s.length());
+            } else {
+                p_mLastLenght = s.length();
+
+                if(p_mLastLenght == 1) {
+                    setText((PLUS + p_mCodeStr + s.toString()));
+                    Selection.setSelection(getText(), getText().length());
+                }
+            }
         }
     }
 
