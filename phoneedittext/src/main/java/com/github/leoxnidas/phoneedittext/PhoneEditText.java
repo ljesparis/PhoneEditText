@@ -96,46 +96,31 @@ public class PhoneEditText extends EditText {
 
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
-            // if user intent to write a number
-            // at international code space,
-            // that number shall be added next
-            // to the international code
-            // of the string, automatically
-            //
-            // Example:
-            //
-            // user intents to write this
-            //
-            //  ---------------
-            // | +518         |
-            //  --------------
-            //
-            // and the result shall be this
-            //
-            //  ---------------
-            // | +581         |
-            //  --------------
-            //
             String currentText = s.toString();
             int currentLength = currentText.length();
 
             String code = PLUS + p_mCodeStr;
             int codeLength = code.length();
 
-            if(currentLength < codeLength)
-                return;
+            if(currentLength < codeLength && p_mLastLenght == 0) {
+                setText((code + s));
+            } else {
+                try {
+                    for(int i = 0; i < codeLength; i++) {
+                        if(currentText.charAt(i) != code.charAt(i)) {
+                            String nCode = code;
 
-            for(int i = 0; i < codeLength; i++) {
-                if(currentText.charAt(i) != code.charAt(i)) {
-                    String nCode = code;
+                            for(int j = codeLength + 1; j < currentLength; j++) {
+                                nCode += Character.toString(currentText.charAt(j));
+                            }
 
-                    for(int j = codeLength + 1; j < currentLength; j++) {
-                        nCode += Character.toString(currentText.charAt(j));
+                            setText(nCode);
+                            Selection.setSelection(getText(), i);
+                            break;
+                        }
                     }
+                } catch (StringIndexOutOfBoundsException ignored) {
 
-                    nCode += Character.toString(currentText.charAt(i));
-                    setText(nCode);
-                    break;
                 }
             }
         }
@@ -143,17 +128,13 @@ public class PhoneEditText extends EditText {
         @Override
         public void afterTextChanged(Editable s) {
             if(s.length() == (PLUS + p_mCodeStr).length() - 1
-                    && p_mLastLenght > (PLUS + p_mCodeStr).length() - 1) {
+                    && p_mLastLenght > (PLUS + p_mCodeStr).length() - 1)
                 setText("");
 
-            } else {
-                p_mLastLenght = s.length();
+            if(p_mLastLenght <= (PLUS + p_mCodeStr).length())
+                Selection.setSelection(getText(), getText().length());
 
-                if(p_mLastLenght == 1) {
-                    setText((PLUS + p_mCodeStr + s.toString()));
-                    Selection.setSelection(getText(), getText().length());
-                }
-            }
+            p_mLastLenght = getText().length();
         }
     }
 
