@@ -20,7 +20,7 @@ allprojects {
 
 
 dependencies {
-    compile 'com.github.leoxnidas:PhoneEditText:1.3'
+    compile 'com.github.leoxnidas:PhoneEditText:1.4'
 }
 ```
 
